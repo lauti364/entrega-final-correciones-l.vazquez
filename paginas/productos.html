@@ -17,20 +17,23 @@
     </nav>
   </header>
 <body>
-  <div>
-      <label for="order">Ordenar por:</label>
-      <select id="order">
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-      </select>
-
-      <label for="offer">Filtrar por oferta:</label>
-      <input type="checkbox" id="offer">
-  </div>
-  <h1>Lista de Productos</h1>
-  <div id="productos-container"></div>
-
-  <script src="-../productos.js"></script> 
+  <body>
+    <h1>Tienda</h1>
+    <label for="orden">Ordenar por:</label>
+    <select id="orden">
+      <option value="ascendente">Ascendente (A-Z)</option>
+      <option value="descendente">Descendente (Z-A)</option>
+    </select>
+    <label for="oferta">
+      <input type="checkbox" id="oferta"> Mostrar solo ofertas
+    </label>
+  
+    <div id="productos-container"></div>
+  
+    <h2>Carrito</h2>
+    <div id="carrito"></div>
+  
+    <script src="productos.js"></script>
 </body>
 
 </html>

@@ -49,118 +49,88 @@ function disableDarkMode() {
 
 
 
+let productos = []; // Almacenar productos globales
 
- // Cargar datos desde productos.json usando JavaScript
- fetch('../productos.json')
- .then(response => response.json())
- .then(data => {
-   const productosContainer = document.getElementById('productos-container');
-
-   // Iterar sobre los productos y agregarlos al contenedor
-   data.forEach(producto => {
-     const productoDiv = document.createElement('div');
-     productoDiv.classList.add('producto');
-
-     // Crear elementos para la imagen, título y descripción
-     const imagen = document.createElement('img');
-     imagen.src = producto.imagen;
-     imagen.alt = producto.titulo;
-     const titulo = document.createElement('h2');
-     titulo.textContent = producto.titulo;
-     const descripcion = document.createElement('p');
-     descripcion.textContent = producto.descripcion;
-
-     // Agregar elementos al contenedor del producto
-     productoDiv.appendChild(imagen);
-     productoDiv.appendChild(titulo);
-     productoDiv.appendChild(descripcion);
-
-     // Agregar el contenedor del producto al contenedor principal
-     productosContainer.appendChild(productoDiv);
-   });
- })
- .catch(error => console.error('Error al cargar los productos', error));
-
-
-
-    
-
-
-
-
-
-//ofertas y eso
-const nodosHtml = (array) => {
-    const nodos = array.reduce((acc, elemento) => {
-        return acc + `
-                    <div class="card">
-                        <div class="container-img">
-                            <img src=${elemento.image} alt=${elemento.name}>
-                        </div>
-                        <h3>
-                            ${elemento.name}
-                        </h3>
-                    </div>
-                `
-    }, "")
-
-    document.querySelector(".zapas").innerHTML = nodos
-}
-const productList = document.getElementById("productos-lista");
-const sortAscendingButton = document.getElementById("ascendente");
-const sortDescendingButton = document.getElementById("descendente");
-const filterOfferCheckbox = document.getElementById("ofertas");
-const cart = document.getElementById("carrito");
-
-let productsData = [];
-
-
-
-//productos en el DOM
-function displayProducts(products) {
-    productList.innerHTML = "";
-    products.forEach(product => {
-        const productCard = document.createElement("div");
-        productCard.classList.add("product-card");
-        productCard.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>Precio: $${product.price}</p>
-            <p>Oferta: ${product.offer ? "Sí" : "No"}</p>
-            <button class="add-to-cart">Agregar al carrito</button>
-        `;
-        productList.appendChild(productCard);
-
-        // botton de añadir al carrito
-        const addToCartButton = productCard.querySelector("añadir al carrito");
-        addToCartButton.addEventListener("click", () => {
-            // Lógica para agregar el producto al carrito
-            const cartItem = document.createElement("div");
-            cartItem.innerHTML = `
-                <p>${product.name} - $${product.price}</p>
-            `;
-            cart.appendChild(cartItem);
-        });
-    });
+// Función para cargar productos desde el archivo JSON
+function cargarProductos() {
+  fetch('productos.json')
+    .then(response => response.json())
+    .then(data => {
+      productos = data;
+      mostrarProductos(productos);
+    })
+    .catch(error => console.error('Error al cargar los productos', error));
 }
 
-// (A-Z)
-sortAscendingButton.addEventListener("click", () => {
-    productsData.sort((a, b) => a.name.localeCompare(b.name));
-    displayProducts(productsData);
+// Función para mostrar productos en el contenedor
+function mostrarProductos(productos) {
+  const productosContainer = document.getElementById('productos-container');
+  productosContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
+
+  productos.forEach(producto => {
+    const productoDiv = document.createElement('div');
+    productoDiv.classList.add('producto');
+
+    const imagen = document.createElement('img');
+    imagen.src = producto.imagen;
+    imagen.alt = producto.titulo;
+
+    const titulo = document.createElement('h3');
+    titulo.textContent = producto.titulo;
+
+    const precio = document.createElement('p');
+    precio.textContent = `Precio: $${producto.precio}`;
+
+    const oferta = document.createElement('p');
+    oferta.textContent = producto.oferta ? 'Oferta' : '';
+
+    const agregarAlCarritoBtn = document.createElement('button');
+    agregarAlCarritoBtn.textContent = 'Agregar al carrito';
+    agregarAlCarritoBtn.addEventListener('click', () => agregarAlCarrito(producto));
+
+    productoDiv.appendChild(imagen);
+    productoDiv.appendChild(titulo);
+    productoDiv.appendChild(precio);
+    productoDiv.appendChild(oferta);
+    productoDiv.appendChild(agregarAlCarritoBtn);
+
+    productosContainer.appendChild(productoDiv);
+  });
+}
+
+// Función para ordenar productos y actualizar la visualización
+function ordenarProductos(orden) {
+  productos.sort((a, b) => {
+    const factor = (orden === 'ascendente') ? 1 : -1;
+    return factor * a.titulo.localeCompare(b.titulo);
+  });
+
+  mostrarProductos(productos);
+}
+
+// Función para filtrar productos por oferta y actualizar la visualización
+function filtrarPorOferta() {
+  const mostrarSoloOfertas = document.getElementById('oferta').checked;
+  const productosFiltrados = mostrarSoloOfertas ? productos.filter(p => p.oferta) : productos;
+  mostrarProductos(productosFiltrados);
+}
+
+// Función para agregar productos al carrito
+function agregarAlCarrito(producto) {
+  const carrito = document.getElementById('carrito');
+  const itemCarrito = document.createElement('div');
+  itemCarrito.textContent = `Producto: ${producto.titulo}, Precio: $${producto.precio}`;
+  carrito.appendChild(itemCarrito);
+}
+
+// Cargar productos al cargar la página
+cargarProductos();
+
+// Configurar eventos para la ordenación y filtrado
+document.getElementById('orden').addEventListener('change', (event) => {
+  ordenarProductos(event.target.value);
 });
 
-//(Z-A)
-sortDescendingButton.addEventListener("click", () => {
-    productsData.sort((a, b) => b.name.localeCompare(a.name));
-    displayProducts(productsData);
-});
+document.getElementById('oferta').addEventListener('change', filtrarPorOferta);
 
-// productos en off
-filterOfferCheckbox.addEventListener("change"), () => {
-    const filteredProducts = filterOfferCheckbox.checked
-        ? productsData.filter(product => product.offer)
-        : productsData;
-    displayProducts(filteredProducts);
-}
-
-
+ 
