@@ -1,8 +1,17 @@
 function mostrarCarrito() {
     // aca se guarda el carrito
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    const carritoContainer = document.querySelector('.carrito-container');
+    var vaciarCarritoBtn = document.getElementById('vaciarCarritoBtn')
+    const carritoContainer = document.querySelector('.carrito-container');vaciarCarritoBtn.addEventListener('click', function () {
+        // Vaciar la clase carrito-container
+        carritoContainer.innerHTML = '';
+      });
+      realizarCompraBtn.addEventListener('click', function () {
+        // Aquí puedes agregar lógica para procesar la compra, enviar la información al servidor, etc.
+        // Después de realizar la compra, vaciar el carrito
+        carritoContainer.innerHTML = '';
+        alert('¡Compra realizada con éxito!');
+      });
     
     if (carrito.length === 0) {
         carritoContainer.innerHTML = '<p>El carrito está vacío.</p>';

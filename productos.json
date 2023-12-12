@@ -1,5 +1,23 @@
 [
-    { "nombre": "Producto 1", "precio": 20 },
-    { "nombre": "Producto 2", "precio": 30 },
-    { "nombre": "Producto 3", "precio": 25 }
+    {
+        "nombre": "Zapatilla 1",
+        "marca": "Marca A",
+        "precio": 100,
+        "imagen": "../imagenes/vv",
+        "oferta": false
+    },
+    {
+        "nombre": "Zapatilla 2",
+        "marca": "Marca B",
+        "precio": 120,
+        "imagen": "../imagenes/vv.jpg",
+        "oferta": true
+    },
+    {
+        "nombre": "Zapatilla 3",
+        "marca": "Marca C",
+        "precio": 90,
+        "imagen": "../imagenes/vv.jpg",
+        "oferta": false
+    }
 ]

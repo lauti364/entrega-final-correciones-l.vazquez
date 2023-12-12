@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeButton = document.getElementById('darkModeButton');
 
@@ -43,56 +44,41 @@ function disableDarkMode() {
     // Guardar el estado en localStorage
     localStorage.setItem('darkMode', 'false');
 }
+ocument.addEventListener('DOMContentLoaded', function () {
+    const productContainer = document.getElementById('productContainer');
 
-
-//lista de productos con precios
-document.addEventListener('DOMContentLoaded', () => {
-    const productList = document.getElementById('product-list');
-
-    // Obtener productos desde JSON
-    fetch ("../productos.json")
+    fetch('../productos.json')
         .then(response => response.json())
         .then(products => {
-            products.forEach(product => {
-                const productElement = createProductElement(product);
-                productList.appendChild(productElement);
-            });
+            renderProducts(products);
         })
-        .catch(error => console.error('Error al obtener la lista de productos:', error));
+        .catch(error => console.error('Error al obtener los datos:', error));
+
+    function renderProducts(products) {
+        productContainer.innerHTML = '';
+
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+
+            const productImage = document.createElement('img');
+            productImage.src = product.imagen;
+            productCard.appendChild(productImage);
+
+            const productName = document.createElement('h2');
+            productName.textContent = product.nombre;
+            productCard.appendChild(productName);
+
+            const productPrice = document.createElement('p');
+            productPrice.textContent = `Precio: $${product.precio}`;
+            productCard.appendChild(productPrice);
+
+            productContainer.appendChild(productCard);
+        });
+    }
 });
 
-function createProductElement(product) {
-    const productElement = document.createElement('div');
-    productElement.className = 'product';
-
-    const productName = document.createElement('h3');
-    productName.textContent = product.nombre;
-
-    const productPrice = document.createElement('p');
-    productPrice.textContent = `Precio: ${product.precio} $`;
-
-    const addToCartButton = document.createElement('button');
-    addToCartButton.className = 'btn-add-to-cart';
-    addToCartButton.textContent = 'Agregar al carrito';
-    addToCartButton.addEventListener('click', () => addToCart(product));
-
-    productElement.appendChild(productName);
-    productElement.appendChild(productPrice);
-    productElement.appendChild(addToCartButton);
-
-    return productElement;
-}
-
-function addToCart(product) {
-    console.log('Producto agregado al carrito:', product);
-}
-
-
-
-
-
-
-
+    
 
 
 

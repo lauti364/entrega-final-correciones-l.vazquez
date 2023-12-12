@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../estilos.css">
+  <link rel="stylesheet" href="../estilos.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
@@ -9,7 +9,7 @@
 <header>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="../paginas/index.html">Home</a></li>
         <li><a href="../paginas/carrito.html">Carrito</a></li>
         <li><a href="../paginas/contacto.html">Contacto</a></li>
         <button id="darkModeButton">Cambiar Modo</button>
@@ -17,16 +17,19 @@
     </nav>
   </header>
 <body>
+  <div>
+      <label for="order">Ordenar por:</label>
+      <select id="order">
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+      </select>
+
+      <label for="offer">Filtrar por oferta:</label>
+      <input type="checkbox" id="offer">
+  </div>
   <h1>Productos</h1>
-  <button id="ascendente">Ordenar A-Z</button>
-  <button id="descendente">Ordenar Z-A</button>
-  <label for="ofertas">Filtrar por oferta:</label>
-  <input type="checkbox" id="ofertas">
-  <div id="product-list"></div>
-  <script src="../productos.js"></script>     
-  <footer>
-    <p>+541100000</p> <p>contact@gmail.com</p>
-  </footer>
+  <div id="productContainer" class="product-container"></div>
+  <script src="-../productos.js"></script> 
 </body>
 
 </html>
