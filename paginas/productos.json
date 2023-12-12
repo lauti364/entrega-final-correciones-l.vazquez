@@ -1,24 +1,20 @@
 [
     {
-      "imagen": "producto1.jpg",
       "titulo": "Producto 1",
       "precio": 20,
       "oferta": true
     },
     {
-      "imagen": "producto2.jpg",
       "titulo": "Producto 2",
       "precio": 30,
       "oferta": false
     },
     {
-      "imagen": "producto3.jpg",
       "titulo": "Producto 3",
       "precio": 25,
       "oferta": true
     },
     {
-      "imagen": "producto4.jpg",
       "titulo": "Producto 4",
       "precio": 15,
       "oferta": false
