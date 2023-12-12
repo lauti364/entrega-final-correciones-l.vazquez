@@ -1,23 +1,17 @@
 [
     {
-        "nombre": "Zapatilla 1",
-        "marca": "Marca A",
-        "precio": 100,
-        "imagen": "../imagenes/vv",
-        "oferta": false
+      "imagen": "j1.jpeg",
+      "titulo": "Producto 1",
+      "descripcion": "Descripción del Producto 1"
     },
     {
-        "nombre": "Zapatilla 2",
-        "marca": "Marca B",
-        "precio": 120,
-        "imagen": "../imagenes/vv.jpg",
-        "oferta": true
+      "imagen": "imagenes/97.jpg",
+      "titulo": "Producto 2",
+      "descripcion": "Descripción del Producto 2"
     },
     {
-        "nombre": "Zapatilla 3",
-        "marca": "Marca C",
-        "precio": 90,
-        "imagen": "../imagenes/vv.jpg",
-        "oferta": false
+      "imagen": "vv.jpg",
+      "titulo": "Producto 3",
+      "descripcion": "Descripción del Producto 3"
     }
-]
+  ]

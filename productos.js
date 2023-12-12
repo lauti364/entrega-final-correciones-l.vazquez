@@ -44,41 +44,48 @@ function disableDarkMode() {
     // Guardar el estado en localStorage
     localStorage.setItem('darkMode', 'false');
 }
-ocument.addEventListener('DOMContentLoaded', function () {
-    const productContainer = document.getElementById('productContainer');
 
-    fetch('productos.json')
-        .then(response => response.json())
-        .then(products => {
-            renderProducts(products);
-        })
-        .catch(error => console.error('Error al obtener los datos:', error));
 
-    function renderProducts(products) {
-        productContainer.innerHTML = '';
 
-        products.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card';
 
-            const productImage = document.createElement('img');
-            productImage.src = product.imagen;
-            productCard.appendChild(productImage);
 
-            const productName = document.createElement('h2');
-            productName.textContent = product.nombre;
-            productCard.appendChild(productName);
 
-            const productPrice = document.createElement('p');
-            productPrice.textContent = `Precio: $${product.precio}`;
-            productCard.appendChild(productPrice);
+ // Cargar datos desde productos.json usando JavaScript
+ fetch('../productos.json')
+ .then(response => response.json())
+ .then(data => {
+   const productosContainer = document.getElementById('productos-container');
 
-            productContainer.appendChild(productCard);
-        });
-    }
-});
+   // Iterar sobre los productos y agregarlos al contenedor
+   data.forEach(producto => {
+     const productoDiv = document.createElement('div');
+     productoDiv.classList.add('producto');
+
+     // Crear elementos para la imagen, título y descripción
+     const imagen = document.createElement('img');
+     imagen.src = producto.imagen;
+     imagen.alt = producto.titulo;
+     const titulo = document.createElement('h2');
+     titulo.textContent = producto.titulo;
+     const descripcion = document.createElement('p');
+     descripcion.textContent = producto.descripcion;
+
+     // Agregar elementos al contenedor del producto
+     productoDiv.appendChild(imagen);
+     productoDiv.appendChild(titulo);
+     productoDiv.appendChild(descripcion);
+
+     // Agregar el contenedor del producto al contenedor principal
+     productosContainer.appendChild(productoDiv);
+   });
+ })
+ .catch(error => console.error('Error al cargar los productos', error));
+
+
 
     
+
+
 
 
 
