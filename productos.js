@@ -47,7 +47,7 @@ function disableDarkMode() {
 ocument.addEventListener('DOMContentLoaded', function () {
     const productContainer = document.getElementById('productContainer');
 
-    fetch('../productos.json')
+    fetch('productos.json')
         .then(response => response.json())
         .then(products => {
             renderProducts(products);
