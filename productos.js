@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
    // Cargar productos desde el archivo JSON
 function cargarProductos() {
-    fetch('productos.json')
+    fetch('./productos.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
