@@ -88,3 +88,8 @@ a:hover {
   color: #f00;
 }
 body{text-align: center;align-items: center;}
+
+.productos-container{width: 100%; display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;}
