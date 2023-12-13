@@ -3,13 +3,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const ordenSelect = document.getElementById('orden');
     const ofertaCheckbox = document.getElementById('oferta');
   
-    // Cargar productos desde el archivo JSON
-    function cargarProductos() {
-      fetch('./productos.json')  // Aquí está la ruta del archivo JSON
-        .then(response => response.json())
-        .then(data => mostrarProductos(data))
-        .catch(error => console.error('Error al cargar los productos', error));
-    }
+   // Cargar productos desde el archivo JSON
+function cargarProductos() {
+    fetch('productos.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Datos de productos:', data);
+        mostrarProductos(data);
+      })
+      .catch(error => console.error('Error al cargar los productos', error));
+  }
+  
   
     // Mostrar productos en el contenedor
     function mostrarProductos(productos) {
