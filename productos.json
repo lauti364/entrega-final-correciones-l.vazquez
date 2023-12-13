@@ -1,11 +1,11 @@
 [
-  { "imagen": "../imagenes/j44.jpg",
+  { "imagen": "../imagenes/97.jpg",
     "titulo": "nike 97",
     "precio": 200,
     "oferta": true
   },
   {
-    "imagen": "../imagenes/j1.jpeg",
+    "imagen": "../imagenes/j4.jpeg",
     "titulo": "jordan 4v2",
     "precio": 300,
     "oferta": false
