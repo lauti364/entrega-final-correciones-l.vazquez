@@ -96,8 +96,8 @@ body{text-align: center;align-items: center;}
 }
 
 .productos-container img {
-  width: 100%;
-  height: auto;
+  width: 10px;
+  height: 10px;
   object-fit: cover;
   border: 1px solid #ccc;
   padding: 10px;
