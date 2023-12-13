@@ -89,7 +89,7 @@ a:hover {
 }
 body{text-align: center;align-items: center;}
 
-.productos-container{width: 100%; display: flex;
+.productos-container{display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;}
+  flex-wrap: wrap;size: 10px;}
