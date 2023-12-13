@@ -110,11 +110,11 @@ function cargarProductos() {
     cargarProductos,
     cargarProductos();
     window.agregarAlCarrito = function (nombreProducto) {
-      // Obtener el producto por su nombre (o título)
+     // se bisca x producto
       const productoSeleccionado = productos.find(producto => producto.nombre === nombreProducto);
   
       if (productoSeleccionado) {
-        // Lógica para agregar el producto al carrito (puedes guardar en local storage, etc.)
+        // agregar a carrito
         console.log(`Producto añadido al carrito: ${productoSeleccionado.nombre}`);
       }
     };
