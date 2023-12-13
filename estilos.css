@@ -87,3 +87,5 @@ a:hover {
 .carrito-item .producto-precio {
   color: #f00;
 }
+body{text-align: center;align-items: center;}
+.produ{display: flex;}
