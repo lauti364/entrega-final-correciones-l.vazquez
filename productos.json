@@ -1,19 +1,19 @@
 [
   {
     "imagen": "../imagenes/4.jpg",
-    "titulo": "zapatillas de correr",
+    "titulo": "adidas x",
     "precio": 300,
     "oferta": false
   },
   {
     "imagen": "../imagenes/5.jpg",
-    "titulo": "adidas",
+    "titulo": "nikes tn",
     "precio": 250,
     "oferta": true
   },
   {
     "imagen": "../imagenes/3.jpg",
-    "titulo": "nikes tn",
+    "titulo": "nike dx",
     "precio": 150,
     "oferta": false
   },
