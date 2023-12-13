@@ -3,12 +3,11 @@ function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     var vaciarCarritoBtn = document.getElementById('vaciarCarritoBtn')
     const carritoContainer = document.querySelector('.carrito-container');vaciarCarritoBtn.addEventListener('click', function () {
-        // Vaciar la clase carrito-container
+        // Vaciar carrito
         carritoContainer.innerHTML = '';
       });
       realizarCompraBtn.addEventListener('click', function () {
-        // Aquí puedes agregar lógica para procesar la compra, enviar la información al servidor, etc.
-        // Después de realizar la compra, vaciar el carrito
+        // vaciar el carrito x compra
         carritoContainer.innerHTML = '';
         alert('¡Compra realizada con éxito!');
       });
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         enableDarkMode();
     }
 
-    // Agregar un event listener al botón
+
     darkModeButton.addEventListener('click', toggleDarkMode);
 });
 

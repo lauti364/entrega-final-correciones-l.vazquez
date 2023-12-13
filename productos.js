@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         enableDarkMode();
     }
 
-    // Agregar un event listener al botón
     darkModeButton.addEventListener('click', toggleDarkMode);
 });
 
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
    // Cargar productos desde el archivo JSON
 function cargarProductos() {
-    fetch('./productos.json')
+    fetch('../productos.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -68,13 +67,13 @@ function cargarProductos() {
   
     // Mostrar productos en el contenedor
     function mostrarProductos(productos) {
-      productosContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
+      productosContainer.innerHTML = '';
   
-      // Ordenar productos según la opción seleccionada
+      // Ordenar productos
       const orden = ordenSelect.value;
       productos.sort((a, b) => (orden === 'ascendente') ? a.titulo.localeCompare(b.titulo) : b.titulo.localeCompare(a.titulo));
   
-      // Filtrar productos según la opción seleccionada
+      // Filtrar productos
       const soloOfertas = ofertaCheckbox.checked;
       const productosFiltrados = soloOfertas ? productos.filter(p => p.oferta) : productos;
   
@@ -100,10 +99,10 @@ function cargarProductos() {
       });
     }
   
-    // Evento de cambio en la selección de orden
+    //cambio en la selección de orden
     ordenSelect.addEventListener('change', cargarProductos);
   
-    // Evento de cambio en la opción de mostrar solo ofertas
+    // cambio en la opción de mostrar solo ofertas
     ofertaCheckbox.addEventListener('change', cargarProductos);
   
     // Cargar productos al cargar la página

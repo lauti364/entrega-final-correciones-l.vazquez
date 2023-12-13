@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         enableDarkMode();
     }
 
-    // Agregar un event listener al botón
+    
     darkModeButton.addEventListener('click', toggleDarkMode);
 });
 
