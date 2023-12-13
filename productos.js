@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Cargar productos desde el archivo JSON
     function cargarProductos() {
-      fetch('productos.json')  // Aquí está la ruta del archivo JSON
+      fetch('./productos.json')  // Aquí está la ruta del archivo JSON
         .then(response => response.json())
         .then(data => mostrarProductos(data))
         .catch(error => console.error('Error al cargar los productos', error));
