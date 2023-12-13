@@ -1,25 +1,25 @@
 [
-  {
-    "titulo": "Producto A",
-    "precio": 20,
+  { "imagen": "imagenes/97.jpg",
+    "titulo": "nike 97",
+    "precio": 200,
     "oferta": true
   },
   {
-    "imagen": "producto2.jpg",
-    "titulo": "Producto B",
-    "precio": 30,
+    "imagen": "imagenes/j44.jpg",
+    "titulo": "jordan 4v2",
+    "precio": 300,
     "oferta": false
   },
   {
-    "imagen": "producto3.jpg",
-    "titulo": "Producto C",
-    "precio": 25,
+    "imagen": "imagenes/j4.jpeg",
+    "titulo": "jordan 4",
+    "precio": 250,
     "oferta": true
   },
   {
-    "imagen": "producto4.jpg",
-    "titulo": "Producto D",
-    "precio": 15,
+    "imagen": "imagenes/vv.jpg",
+    "titulo": "vans",
+    "precio": 150,
     "oferta": false
   }
 ]
