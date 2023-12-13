@@ -91,7 +91,6 @@ function cargarProductos() {
         const precio = document.createElement('p');
         precio.textContent = `Precio: $${producto.precio}`;
         const botonAgregar = document.createElement('button');
-       botonAgregar.textContent = 'Agregar al carrito';
         botonAgregar.addEventListener('click', () => agregarAlCarrito(producto));
   
         productoDiv.appendChild(imagen);
