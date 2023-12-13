@@ -106,7 +106,7 @@ function cargarProductos() {
       console.log(`Producto "${producto.titulo}" agregado al carrito`);
     
       // Redirigir a la página del carrito
-      window.location.href = '../paginas.carrito.html';
+      window.location.href = '../paginas/.carrito.html';
     }
     
     
@@ -122,5 +122,14 @@ function cargarProductos() {
     // Cargar productos al cargar la página
     cargarProductos,
     cargarProductos();
+    window.agregarAlCarrito = function (nombreProducto) {
+      // Obtener el producto por su nombre (o título)
+      const productoSeleccionado = productos.find(producto => producto.nombre === nombreProducto);
+  
+      if (productoSeleccionado) {
+        // Lógica para agregar el producto al carrito (puedes guardar en local storage, etc.)
+        console.log(`Producto añadido al carrito: ${productoSeleccionado.nombre}`);
+      }
+    };
   });
   
