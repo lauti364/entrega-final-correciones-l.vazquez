@@ -1,24 +1,24 @@
 [
   {
     "imagen": "../imagenes/4.jpg",
-    "titulo": "jordan 4v2",
+    "titulo": "zapatillas de correr",
     "precio": 300,
     "oferta": false
   },
   {
     "imagen": "../imagenes/5.jpg",
-    "titulo": "jordan 4",
+    "titulo": "adidas",
     "precio": 250,
     "oferta": true
   },
   {
     "imagen": "../imagenes/3.jpg",
-    "titulo": "vans",
+    "titulo": "nikes tn",
     "precio": 150,
     "oferta": false
   },
   { "imagen": "../imagenes/1.webp",
-  "titulo": "nike 97",
+  "titulo": "zapatilas diarias",
   "precio": 200,
   "oferta": true
 }
