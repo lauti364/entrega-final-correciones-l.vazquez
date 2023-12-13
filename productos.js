@@ -90,15 +90,29 @@ function cargarProductos() {
   
         const precio = document.createElement('p');
         precio.textContent = `Precio: $${producto.precio}`;
+        const botonAgregar = document.createElement('button');
+       botonAgregar.textContent = 'Agregar al carrito';
+        botonAgregar.addEventListener('click', () => agregarAlCarrito(producto));
   
         productoDiv.appendChild(imagen);
         productoDiv.appendChild(titulo);
         productoDiv.appendChild(precio);
-  
+        productoDiv.appendChild(botonAgregar);
+
         productosContainer.appendChild(productoDiv);
       });
     }
-  
+    function agregarAlCarrito(producto) {
+      console.log(`Producto "${producto.titulo}" agregado al carrito`);
+    
+      // Redirigir a la página del carrito
+      window.location.href = '../paginas.carrito.html';
+    }
+    
+    
+    
+    
+    
     //cambio en la selección de orden
     ordenSelect.addEventListener('change', cargarProductos);
   

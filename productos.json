@@ -5,19 +5,19 @@
     "oferta": true
   },
   {
-    "imagen": "https://images.app.goo.gl/CtWKsJ5SYbvqvEAx7",
+    "imagen": "../imagenes/97.jpg",
     "titulo": "jordan 4v2",
     "precio": 300,
     "oferta": false
   },
   {
-    "imagen": "https://images.app.goo.gl/CtWKsJ5SYbvqvEAx7",
+    "imagen": "imagenes/97.jpg",
     "titulo": "jordan 4",
     "precio": 250,
     "oferta": true
   },
   {
-    "imagen": "https://images.app.goo.gl/CtWKsJ5SYbvqvEAx7",
+    "imagen": "imagenes/97.jpg",
     "titulo": "vans",
     "precio": 150,
     "oferta": false
