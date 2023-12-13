@@ -44,26 +44,6 @@ function disableDarkMode() {
     localStorage.setItem('darkMode', 'false');
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const productosContainer = document.getElementById('productos-container');
     const ordenSelect = document.getElementById('orden');
@@ -127,6 +107,7 @@ function cargarProductos() {
     ofertaCheckbox.addEventListener('change', cargarProductos);
   
     // Cargar productos al cargar la página
+    cargarProductos,
     cargarProductos();
   });
   
