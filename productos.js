@@ -3,7 +3,7 @@ let productos = []; // Almacenar productos globales
 
 // Función para cargar productos desde el archivo JSON
 function cargarProductos() {
-  fetch('../paginas/productos.json')
+  fetch('../productos.json')
     .then(response => response.json())
     .then(data => {
       productos = data;

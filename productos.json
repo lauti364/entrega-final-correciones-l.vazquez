@@ -1,0 +1,18 @@
+[
+    {
+      "titulo": "jordan 1",
+      "precio": 20,
+      "oferta": true
+    },
+    {
+      "titulo": "vans",
+      "precio": 30,
+      "oferta": false
+    },
+    {
+      "titulo": "jordan 4",
+      "precio": 25,
+      "oferta": true
+    }
+  ]
+  
