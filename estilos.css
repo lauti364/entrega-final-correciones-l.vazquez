@@ -1,5 +1,5 @@
 header{background-color: #000;justify-content: center;padding: 0px;margin: 0px;display: flex;width: 100%;margin-bottom: 0px;}
-footer{width: 100%;padding: 0px;background-color: #000;color: white;margin: 0px;margin-bottom: 0px;}
+footer{width: 100%;padding: 0px;background-color: #000;color: white;margin: 0px;margin-bottom: 0px;position: absolute;}
 .ofertas{background-color: #000;color: white;display: flex;justify-content: center;align-items: center;padding: 0px;margin:0px}
 body{padding: 0px;margin: 0px;width: 100%;}
 /*cambiar de color*/
@@ -89,7 +89,27 @@ a:hover {
 }
 body{text-align: center;align-items: center;}
 
-.productos-container{display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;size: 10px;}
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.productos-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.productos-container h3 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.productos-container p {
+  text-align: center;
+  margin-bottom: 10px;
+}
