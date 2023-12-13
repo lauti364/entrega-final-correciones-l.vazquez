@@ -1,23 +1,23 @@
 [
-  { "imagen": "imagenes/97.jpg",
+  { "imagen": "ihttps://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nike.com%2Fph%2Flaunch%2Ft%2Fair-jordan-4-fire-red&psig=AOvVaw2hUvwShcy8geYrdy0YGiKp&ust=1702518070400000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLDXiZiki4MDFQAAAAAdAAAAABAE",
     "titulo": "nike 97",
     "precio": 200,
     "oferta": true
   },
   {
-    "imagen": "imagenes/j44.jpg",
+    "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nike.com%2Fph%2Flaunch%2Ft%2Fair-jordan-4-fire-red&psig=AOvVaw2hUvwShcy8geYrdy0YGiKp&ust=1702518070400000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLDXiZiki4MDFQAAAAAdAAAAABAE",
     "titulo": "jordan 4v2",
     "precio": 300,
     "oferta": false
   },
   {
-    "imagen": "imagenes/j4.jpeg",
+    "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nike.com%2Fph%2Flaunch%2Ft%2Fair-jordan-4-fire-red&psig=AOvVaw2hUvwShcy8geYrdy0YGiKp&ust=1702518070400000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLDXiZiki4MDFQAAAAAdAAAAABAE",
     "titulo": "jordan 4",
     "precio": 250,
     "oferta": true
   },
   {
-    "imagen": "imagenes/vv.jpg",
+    "imagen": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nike.com%2Fph%2Flaunch%2Ft%2Fair-jordan-4-fire-red&psig=AOvVaw2hUvwShcy8geYrdy0YGiKp&ust=1702518070400000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLDXiZiki4MDFQAAAAAdAAAAABAE",
     "titulo": "vans",
     "precio": 150,
     "oferta": false
