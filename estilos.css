@@ -96,11 +96,8 @@ body{text-align: center;align-items: center;}
 }
 
 .productos-container img {
-  width: 10px;
-  height: 10px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
+    max-width: 100%;
+    height: auto;
 }
 
 .productos-container h3 {
