@@ -16,5 +16,10 @@
     "titulo": "vans",
     "precio": 150,
     "oferta": false
-  }
+  },
+  { "imagen": "../imagenes/97.jpg",
+  "titulo": "nike 97",
+  "precio": 200,
+  "oferta": true
+}
 ]
