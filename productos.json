@@ -1,18 +1,26 @@
 [
-    {
-      "titulo": "jordan 1",
-      "precio": 20,
-      "oferta": true
-    },
-    {
-      "titulo": "vans",
-      "precio": 30,
-      "oferta": false
-    },
-    {
-      "titulo": "jordan 4",
-      "precio": 25,
-      "oferta": true
-    }
-  ]
-  
+  {
+    "imagen": "producto1.jpg",
+    "titulo": "Producto A",
+    "precio": 20,
+    "oferta": true
+  },
+  {
+    "imagen": "producto2.jpg",
+    "titulo": "Producto B",
+    "precio": 30,
+    "oferta": false
+  },
+  {
+    "imagen": "producto3.jpg",
+    "titulo": "Producto C",
+    "precio": 25,
+    "oferta": true
+  },
+  {
+    "imagen": "producto4.jpg",
+    "titulo": "Producto D",
+    "precio": 15,
+    "oferta": false
+  }
+]

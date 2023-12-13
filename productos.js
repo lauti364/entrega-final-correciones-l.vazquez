@@ -1,86 +1,57 @@
-
-let productos = []; // Almacenar productos globales
-
-// Función para cargar productos desde el archivo JSON
-function cargarProductos() {
-  fetch('../productos.json')
-    .then(response => response.json())
-    .then(data => {
-      productos = data;
-      mostrarProductos(productos);
-    })
-    .catch(error => console.error('Error al cargar los productos', error));
-}
-
-// Función para mostrar productos en el contenedor
-function mostrarProductos(productos) {
-  const productosContainer = document.getElementById('productos-container');
-  productosContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
-
-  productos.forEach(producto => {
-    const productoDiv = document.createElement('div');
-    productoDiv.classList.add('producto');
-
-    const imagen = document.createElement('img');
-    imagen.src = producto.imagen;
-    imagen.alt = producto.titulo;
-
-    const titulo = document.createElement('h3');
-    titulo.textContent = producto.titulo;
-
-    const precio = document.createElement('p');
-    precio.textContent = `Precio: $${producto.precio}`;
-
-    const oferta = document.createElement('p');
-    oferta.textContent = producto.oferta ? 'Oferta' : '';
-
-    const agregarAlCarritoBtn = document.createElement('button');
-    agregarAlCarritoBtn.textContent = 'Agregar al carrito';
-    agregarAlCarritoBtn.addEventListener('click', () => agregarAlCarrito(producto));
-
-    productoDiv.appendChild(imagen);
-    productoDiv.appendChild(titulo);
-    productoDiv.appendChild(precio);
-    productoDiv.appendChild(oferta);
-    productoDiv.appendChild(agregarAlCarritoBtn);
-
-    productosContainer.appendChild(productoDiv);
+document.addEventListener('DOMContentLoaded', function () {
+    const productosContainer = document.getElementById('productos-container');
+    const ordenSelect = document.getElementById('orden');
+    const ofertaCheckbox = document.getElementById('oferta');
+  
+    // Cargar productos desde el archivo JSON
+    function cargarProductos() {
+      fetch('productos.json')  // Aquí está la ruta del archivo JSON
+        .then(response => response.json())
+        .then(data => mostrarProductos(data))
+        .catch(error => console.error('Error al cargar los productos', error));
+    }
+  
+    // Mostrar productos en el contenedor
+    function mostrarProductos(productos) {
+      productosContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
+  
+      // Ordenar productos según la opción seleccionada
+      const orden = ordenSelect.value;
+      productos.sort((a, b) => (orden === 'ascendente') ? a.titulo.localeCompare(b.titulo) : b.titulo.localeCompare(a.titulo));
+  
+      // Filtrar productos según la opción seleccionada
+      const soloOfertas = ofertaCheckbox.checked;
+      const productosFiltrados = soloOfertas ? productos.filter(p => p.oferta) : productos;
+  
+      productosFiltrados.forEach(producto => {
+        const productoDiv = document.createElement('div');
+        productoDiv.classList.add('producto');
+  
+        const imagen = document.createElement('img');
+        imagen.src = producto.imagen;
+        imagen.alt = producto.titulo;
+  
+        const titulo = document.createElement('h3');
+        titulo.textContent = producto.titulo;
+  
+        const precio = document.createElement('p');
+        precio.textContent = `Precio: $${producto.precio}`;
+  
+        productoDiv.appendChild(imagen);
+        productoDiv.appendChild(titulo);
+        productoDiv.appendChild(precio);
+  
+        productosContainer.appendChild(productoDiv);
+      });
+    }
+  
+    // Evento de cambio en la selección de orden
+    ordenSelect.addEventListener('change', cargarProductos);
+  
+    // Evento de cambio en la opción de mostrar solo ofertas
+    ofertaCheckbox.addEventListener('change', cargarProductos);
+  
+    // Cargar productos al cargar la página
+    cargarProductos();
   });
-}
-
-// Función para ordenar productos y actualizar la visualización
-function ordenarProductos(orden) {
-  productos.sort((a, b) => {
-    const factor = (orden === 'ascendente') ? 1 : -1;
-    return factor * a.titulo.localeCompare(b.titulo);
-  });
-
-  mostrarProductos(productos);
-}
-
-// Función para filtrar productos por oferta y actualizar la visualización
-function filtrarPorOferta() {
-  const mostrarSoloOfertas = document.getElementById('oferta').checked;
-  const productosFiltrados = mostrarSoloOfertas ? productos.filter(p => p.oferta) : productos;
-  mostrarProductos(productosFiltrados);
-}
-
-// Función para agregar productos al carrito
-function agregarAlCarrito(producto) {
-  const carrito = document.getElementById('carrito');
-  const itemCarrito = document.createElement('div');
-  itemCarrito.textContent = `Producto: ${producto.titulo}, Precio: $${producto.precio}`;
-  carrito.appendChild(itemCarrito);
-}
-
-// Cargar productos al cargar la página
-cargarProductos();
-
-// Configurar eventos para la ordenación y filtrado
-document.getElementById('orden').addEventListener('change', (event) => {
-  ordenarProductos(event.target.value);
-});
-
-document.getElementById('oferta').addEventListener('change', filtrarPorOferta);
-
- 
+  
