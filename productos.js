@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       enableDarkMode();
   }
 
-
   darkModeButton.addEventListener('click', toggleDarkMode);
 });
 
@@ -44,62 +43,70 @@ function disableDarkMode() {
   localStorage.setItem('darkMode', 'false');
 }
 
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   const productosContainer = document.getElementById('productos-container');
-  let productos = [];
+  const ordenSelect = document.getElementById('orden');
+  const ofertaCheckbox = document.getElementById('oferta');
 
-  // Cargar productos desde el archivo JSON
+ // Cargar productos desde el archivo JSON
+function cargarProductos() {
   fetch('../productos.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
-      productos = data;
-      mostrarProductos(productos);
-    });
+      console.log('Datos de productos:', data);
+      mostrarProductos(data);
+    })
+    .catch(error => console.error('Error al cargar los productos', error));
+}
 
+
+  // Mostrar productos en el contenedor
   function mostrarProductos(productos) {
     productosContainer.innerHTML = '';
 
-    // Mostrar cada producto
-    productos.forEach(producto => {
-      const productoNode = crearProductoNode(producto);
-      productosContainer.appendChild(productoNode);
+    // Ordenar productos
+    const orden = ordenSelect.value;
+    productos.sort((a, b) => (orden === 'ascendente') ? a.titulo.localeCompare(b.titulo) : b.titulo.localeCompare(a.titulo));
+
+    // Filtrar productos
+    const soloOfertas = ofertaCheckbox.checked;
+    const productosFiltrados = soloOfertas ? productos.filter(p => p.oferta) : productos;
+
+    productosFiltrados.forEach(producto => {
+      const productoDiv = document.createElement('div');
+      productoDiv.classList.add('producto');
+
+      const imagen = document.createElement('img');
+      imagen.src = producto.imagen;
+      imagen.alt = producto.titulo;
+      const titulo = document.createElement('h3');
+      titulo.textContent = producto.titulo;
+
+      const precio = document.createElement('p');
+      precio.textContent = `Precio: $${producto.precio}`;
+      const botonAgregar = document.createElement('button');
+      botonAgregar.addEventListener('click', () => agregarAlCarrito(producto));
+
+      productoDiv.appendChild(imagen);
+      productoDiv.appendChild(titulo);
+      productoDiv.appendChild(precio);
+      productosContainer.appendChild(productoDiv);
     });
   }
+  //cambio en la selección de orden
+  ordenSelect.addEventListener('change', cargarProductos);
 
-  function crearProductoNode(producto) {
-    const productoNode = document.createElement('div');
-    productoNode.className = 'producto';
+  // cambio en la opción de mostrar solo ofertas
+  ofertaCheckbox.addEventListener('change', cargarProductos);
 
-    // Crea los elementos HTML para el producto
-    productoNode.innerHTML = `
-      <h3>${producto.titulo}</h3>
-      <p>Precio: $${producto.precio.toFixed(2)}</p>
-      <p>${producto.oferta ? '¡Oferta!' : ''}</p>
-      <button onclick="agregarAlCarrito('${producto.titulo}', ${producto.precio})">Agregar al carrito</button>
-    `;
+  // Cargar productos al cargar la página
+  cargarProductos,
+  cargarProductos();
 
-    return productoNode;
-  }
-
-  // Función para agregar al carrito
-  window.agregarAlCarrito = function (tituloProducto, precioProducto) {
-    // Lógica para agregar el producto al carrito (puedes guardar en local storage, etc.)
-    const carritoItem = { titulo: tituloProducto, precio: precioProducto };
-    agregarAlCarritoHTML(carritoItem);
-  };
-
-  function agregarAlCarritoHTML(item) {
-    // Lógica para agregar el item al HTML del carrito (puedes usar local storage o enviar a una página de carrito, etc.)
-    const carritoContainer = document.getElementById('carrito-container');
-
-    const carritoItemNode = document.createElement('div');
-    carritoItemNode.innerHTML = `<p>${item.titulo} - Precio: $${item.precio.toFixed(2)}</p>`;
-    carritoContainer.appendChild(carritoItemNode);
-  }
 });
+
