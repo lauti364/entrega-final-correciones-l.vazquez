@@ -47,23 +47,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const productosContainer = document.getElementById('productos-container');
   const ordenSelect = document.getElementById('orden');
   const ofertaCheckbox = document.getElementById('oferta');
+  const carritoContainer = document.getElementById('carrito-container');
 
- // Cargar productos desde el archivo JSON
-function cargarProductos() {
-  fetch('../productos.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Datos de productos:', data);
-      mostrarProductos(data);
-    })
-    .catch(error => console.error('Error al cargar los productos', error));
-}
-
+  // Cargar productos desde el archivo JSON
+  function cargarProductos() {
+    fetch('../productos.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Datos de productos:', data);
+        mostrarProductos(data);
+      })
+      .catch(error => console.error('Error al cargar los productos', error));
+  }
 
   // Mostrar productos en el contenedor
   function mostrarProductos(productos) {
@@ -84,28 +84,58 @@ function cargarProductos() {
       const imagen = document.createElement('img');
       imagen.src = producto.imagen;
       imagen.alt = producto.titulo;
+
       const titulo = document.createElement('h3');
       titulo.textContent = producto.titulo;
 
       const precio = document.createElement('p');
       precio.textContent = `Precio: $${producto.precio}`;
+
       const botonAgregar = document.createElement('button');
+      botonAgregar.textContent = 'Agregar al Carrito';
       botonAgregar.addEventListener('click', () => agregarAlCarrito(producto));
 
       productoDiv.appendChild(imagen);
       productoDiv.appendChild(titulo);
       productoDiv.appendChild(precio);
+      productoDiv.appendChild(botonAgregar);
+
       productosContainer.appendChild(productoDiv);
     });
   }
-  //cambio en la selección de orden
+
+  // Función para agregar un producto al carrito
+  function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+  }
+
+  // Función para mostrar el contenido del carrito en la página
+  function mostrarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carritoContainer.innerHTML = '';
+
+    if (carrito.length === 0) {
+      carritoContainer.innerHTML = '<p>El carrito está vacío.</p>';
+    } else {
+      let total = 0;
+      carritoContainer.innerHTML = '<h2>Productos en el Carrito</h2>';
+      carrito.forEach((producto, index) => {
+        total += producto.precio;
+        carritoContainer.innerHTML += `<p>${index + 1}. ${producto.titulo} - $${producto.precio.toFixed(2)}</p>`;
+      });
+      carritoContainer.innerHTML += `<p><strong>Total: $${total.toFixed(2)}</strong></p>`;
+    }
+  }
+
+  // Cambio en la selección de orden
   ordenSelect.addEventListener('change', cargarProductos);
 
-  // cambio en la opción de mostrar solo ofertas
+  // Cambio en la opción de mostrar solo ofertas
   ofertaCheckbox.addEventListener('change', cargarProductos);
 
   // Cargar productos al cargar la página
-  cargarProductos,
   cargarProductos();
-
 });
