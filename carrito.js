@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carritoContainer.innerHTML = '<h2>Productos en el Carrito</h2>';
             carrito.forEach((producto, index) => {
                 total += producto.precio;
-                carritoContainer.innerHTML += `<p>${index + 1}. ${producto.nombre} - $${producto.precio.toFixed(2)}</p>`;
+                carritoContainer.innerHTML += `<p>${index + 1}. ${producto.titulo} - $${producto.precio.toFixed(2)}</p>`;
             });
             carritoContainer.innerHTML += `<p><strong>Total: $${total.toFixed(2)}</strong></p>`;
         }
