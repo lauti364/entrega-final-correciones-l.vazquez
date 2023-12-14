@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Función para agregar un producto al carrito
+  // agregar a carrito
   function agregarAlCarrito(producto) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito.push(producto);
@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
     mostrarCarrito();
   }
 
-  // Función para mostrar el contenido del carrito en la página
   function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carritoContainer.innerHTML = '';

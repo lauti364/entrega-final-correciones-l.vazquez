@@ -45,15 +45,15 @@ function disableDarkMode() {
 }
 
 /*home*/
-function agregarProducto(nombre, precio) {
+function agregarProducto(titulo, precio) {
     // Obtener el carrito actual desde localStorage
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     // Agregar producyto al carrito
-    carrito.push({ nombre, precio });
+    carrito.push({ titulo, precio });
 
     // Guardar el carrito actualizado en localStorage
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
-    alert(`¡${nombre} agregado al carrito!`);
+    alert(`¡${titulo} agregado al carrito!`);
 }

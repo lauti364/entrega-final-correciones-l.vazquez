@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             carritoContainer.innerHTML += `<p><strong>Total: $${total.toFixed(2)}</strong></p>`;
         }
-    }
+    } 
 
     // Mostrar el carrito al cargar la página
     mostrarCarrito();
